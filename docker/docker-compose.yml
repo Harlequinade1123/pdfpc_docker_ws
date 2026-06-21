@@ -1,0 +1,21 @@
+services:
+  slides:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        USERNAME: ${SLIDE_USER:-slides}
+        USER_UID: ${UID:-1000}
+        USER_GID: ${GID:-1000}
+    image: pdfpc-slides:latest
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+      QT_X11_NO_MITSHM: "1"
+      TZ: ${TZ:-Asia/Tokyo}
+      ALSOFT_DRIVERS: "null"
+    volumes:
+      - ${PWD}:${PWD}
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    working_dir: ${PWD}
+    stdin_open: true
+    tty: true
