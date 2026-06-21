@@ -1,0 +1,75 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "project",
+      "type": "promptString",
+      "description": "Project name under projects/",
+      "default": "pdfpc-video-example"
+    },
+    {
+      "id": "texfile",
+      "type": "promptString",
+      "description": "TeX file name",
+      "default": "main.tex"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "make: build image",
+      "type": "shell",
+      "command": "make",
+      "args": ["build"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: compile",
+      "type": "shell",
+      "command": "make",
+      "args": ["compile", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: watch",
+      "type": "shell",
+      "command": "make",
+      "args": ["watch", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: present",
+      "type": "shell",
+      "command": "make",
+      "args": ["present", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: present windowed",
+      "type": "shell",
+      "command": "make",
+      "args": ["present-windowed", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: present dual screen",
+      "type": "shell",
+      "command": "make",
+      "args": ["present-dual-screen", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "make: clean",
+      "type": "shell",
+      "command": "make",
+      "args": ["clean", "PROJECT=${input:project}", "TEXFILE=${input:texfile}"],
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
