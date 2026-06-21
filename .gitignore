@@ -1,0 +1,27 @@
+# Workspace
+.DS_Store
+
+# Docker
+/docker/*.log
+
+# LaTeX build artifacts
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.fls
+**/*.fdb_latexmk
+**/*.log
+**/*.nav
+**/*.out
+**/*.pdf
+**/*.run.xml
+**/*.snm
+**/*.synctex
+**/*.synctex.gz
+**/*.synctex(busy)
+**/*.toc
+**/*.vrb
+
+# Local slide projects
+projects/*
+!projects/.gitkeep
