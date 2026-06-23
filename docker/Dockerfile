@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-recommended \
     texlive-luatex \
     texlive-pictures \
+    texlive-science \
     texlive-xetex \
     x11-apps \
     xauth \
