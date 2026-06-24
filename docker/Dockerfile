@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pdfpc \
     poppler-utils \
     texlive-fonts-recommended \
+    texlive-font-utils \
     texlive-lang-japanese \
     texlive-latex-extra \
     texlive-latex-recommended \
