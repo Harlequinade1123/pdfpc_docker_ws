@@ -15,6 +15,7 @@ services:
       ALSOFT_DRIVERS: "null"
     volumes:
       - ${PWD}:${PWD}
+      - ${PWD}/docker/pdfpc-config:/opt/pdfpc-config:ro
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     working_dir: ${PWD}
     stdin_open: true

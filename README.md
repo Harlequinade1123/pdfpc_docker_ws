@@ -80,6 +80,16 @@ make present-dual-screen PROJECT=demo TEXFILE=slides.tex
 6. 2 画面構成で PDF を大きく表示したい場合は `make present-dual-screen PROJECT=<talk-name>` を使う。
 
 
+## pdfpc の表示設定
+
+`make present`、`make present-windowed`、`make present-dual-screen` は、既定で `docker/pdfpc-config/pdfpc/pdfpc.css` を pdfpc の設定として読み込みます。speaker notes の文字サイズや色を変えたい場合は、この CSS をローカルで編集してください。Docker イメージの再ビルドは不要です。
+
+プロジェクト固有の `.config` を使いたい場合は、`PDFPC_CONFIG_HOME` で切り替えられます。
+
+```bash
+make present PROJECT=demo PDFPC_CONFIG_HOME="$PWD/projects/demo/.config"
+```
+
 ## VS Code での作業
 
 `.vscode/tasks.json` を入れてあるので、VS Code の `Tasks: Run Task` からそのまま実行できます。

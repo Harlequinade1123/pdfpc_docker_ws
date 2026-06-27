@@ -6,6 +6,7 @@ RUN := $(COMPOSE) run --rm slides
 LATEX_ENGINE ?= lualatex
 LATEXMK_FLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error -synctex=1
 PDFPC_OPTS ?=
+PDFPC_CONFIG_HOME ?= /opt/pdfpc-config
 PDFPC_NOTES_POSITION ?=
 PDFPC_WINDOWED_MODE ?= both
 PDFPC_PRESENTATION_SCREEN ?=
@@ -110,7 +111,7 @@ endif
 			xelatex) latexmk -xelatex $(LATEXMK_FLAGS) "$$texfile" ;; \
 			lualatex|*) latexmk -lualatex $(LATEXMK_FLAGS) "$$texfile" ;; \
 		esac; \
-		pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) "$${texfile%.tex}.pdf"'
+		XDG_CONFIG_HOME="$(PDFPC_CONFIG_HOME)" pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) "$${texfile%.tex}.pdf"'
 
 present-windowed: ## Compile and launch pdfpc in windowed mode (make present-windowed PROJECT=demo)
 ifndef PROJECT
@@ -136,7 +137,7 @@ endif
 			xelatex) latexmk -xelatex $(LATEXMK_FLAGS) "$$texfile" ;; \
 			lualatex|*) latexmk -lualatex $(LATEXMK_FLAGS) "$$texfile" ;; \
 		esac; \
-		pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) --windowed=$(PDFPC_WINDOWED_MODE) "$${texfile%.tex}.pdf"'
+		XDG_CONFIG_HOME="$(PDFPC_CONFIG_HOME)" pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) --windowed=$(PDFPC_WINDOWED_MODE) "$${texfile%.tex}.pdf"'
 
 present-dual-screen: ## Compile and launch pdfpc using two monitors (make present-dual-screen PROJECT=demo)
 ifndef PROJECT
@@ -165,7 +166,7 @@ endif
 		screen_args=""; \
 		if [ -n "$(PDFPC_PRESENTER_SCREEN)" ]; then screen_args="$$screen_args -1 $(PDFPC_PRESENTER_SCREEN)"; fi; \
 		if [ -n "$(PDFPC_PRESENTATION_SCREEN)" ]; then screen_args="$$screen_args -2 $(PDFPC_PRESENTATION_SCREEN)"; fi; \
-		pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) $$screen_args "$${texfile%.tex}.pdf"'
+		XDG_CONFIG_HOME="$(PDFPC_CONFIG_HOME)" pdfpc $(PDFPC_OPTS) $(if $(PDFPC_NOTES_POSITION),--notes=$(PDFPC_NOTES_POSITION)) $$screen_args "$${texfile%.tex}.pdf"'
 
 clean: ## Remove LaTeX build artifacts (make clean PROJECT=demo)
 ifndef PROJECT

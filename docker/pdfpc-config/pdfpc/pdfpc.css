@@ -1,0 +1,67 @@
+*:not(button):not(label) {
+    border: none;
+    font-family: Verdana;
+    -GtkProgressBar-min-horizontal-bar-width: 1px;
+}
+
+scrolledwindow trough * {
+    background-color: gray;
+}
+
+scrolledwindow trough {
+    background-color: white;
+}
+
+progressbar trough * {
+    background-image: none;
+    background-color: blue;
+}
+
+progressbar trough {
+    background-color: white;
+}
+
+entry, iconview, textview *, window {
+    background-color: black;
+    color: white;
+}
+
+textview, textview text, textview * {
+    font-size: 22pt;
+}
+
+entry {
+    background-image: none;
+}
+
+.toolbox button:not(.color) * {
+    background-color: gray;
+}
+
+.overviewWindow {
+    font-size: 4em;
+}
+
+.bottomText {
+    font-size: 4em;
+}
+
+.pretalk {
+    color: green;
+}
+
+.last-minutes {
+    color: orange;
+}
+
+.overtime {
+    color: red;
+}
+
+.too-fast {
+    color: steelblue;
+}
+
+.too-slow {
+    color: orange;
+}
